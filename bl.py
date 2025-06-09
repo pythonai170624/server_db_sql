@@ -7,3 +7,6 @@ def insert_item(item: Item):
 
 def get_items():
     return dal.get_items()
+
+def update_items(id: int, item: Item):
+    return dal.update_item(id, item)

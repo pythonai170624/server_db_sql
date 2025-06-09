@@ -41,3 +41,11 @@ def delete_item(item_id: int):
         cursor.execute("DELETE FROM items WHERE id = ?", (item_id,))
         conn.commit()
         return {"detail": f"Item {item_id} deleted successfully"}
+
+def update_item(item_id: int, item: Item):
+    with sqlite3.connect(DB_NAME) as conn:
+        cursor = conn.cursor()
+        cursor.execute("UPDATE items SET name = ?, price = ? WHERE id = ?", (item.name, item.price, item_id))
+        conn.commit()
+        item.id = item_id
+        return item
