@@ -1,0 +1,10 @@
+pip install fastapi uvicorn sqlite
+uvicorn main:app --reload
+
+pip install spacy
+python -m spacy download en_core_web_sm
+
+pip install fastapi uvicorn "pydantic" "sqlite-utils"
+
+http://127.0.0.1:8000/docs
+http://127.0.0.1:8000/redoc
