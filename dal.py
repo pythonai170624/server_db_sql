@@ -43,6 +43,9 @@ def delete_item(item_id: int):
         return {"detail": f"Item {item_id} deleted successfully"}
 
 def update_item(item_id: int, item: Item):
+    # not fully implemented ...
+    # need to check if not exist - > insert
+    # and otherwise--
     with sqlite3.connect(DB_NAME) as conn:
         cursor = conn.cursor()
         cursor.execute("UPDATE items SET name = ?, price = ? WHERE id = ?", (item.name, item.price, item_id))
