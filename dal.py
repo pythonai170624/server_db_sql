@@ -49,3 +49,13 @@ def update_item(item_id: int, item: Item):
         conn.commit()
         item.id = item_id
         return item
+
+def get_item_by_id(id):
+    with sqlite3.connect(DB_NAME) as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT id, name, price FROM items WHERE id = ?", (id,))
+        row = cursor.fetchone()
+        if row:
+            return Item(id=row[0], name=row[1], price=row[2])
+        else:
+            return None
